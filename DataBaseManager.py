@@ -27,6 +27,7 @@ class Database:
         try:
             cursor.execute(query, params)
             self.connection.commit()
-            return cursor.fetchall()
+            result = cursor.fetchall()
+            return result
         except Error as e:
             print("the error {} occurred".format(e))
