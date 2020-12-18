@@ -5,7 +5,8 @@ class Device:
 
     def create_table(self):
         query = "CREATE TABLE IF NOT EXISTS devices (plan_id TEXT NOT NULL,\
-         name TEXT NOT NULL, type TEXT NOT NULL, owner TEXT NOT NULL );"
+         name TEXT NOT NULL, type TEXT NOT NULL, owner TEXT NOT NULL, " \
+                "FOREIGN KEY (plan_id) REFERENCES dataplans(ID), FOREIGN KEY (owner) REFERENCES person(name));"
         self.db.execute_query(query)
 
     def add_device(self, plan_id, name, device_type):
@@ -15,6 +16,11 @@ class Device:
 
     def view_device(self, name):
         query = "SELECT * FROM devices WHERE name = ?"
-        params = tuple(name)
+        params = tuple(name,)
         results = self.db.execute_read_query(query, params)
         return results
+
+    def remove_device(self, name):
+        query = "DELETE FROM device WHERE name = ?"
+        params = (name,)
+        self.db.execute_query(query, params)

@@ -4,7 +4,7 @@ class Person:
         self.create_table()
 
     def create_table(self):
-        query = "CREATE TABLE IF NOT EXISTS people (name TEXT NOT NULL primary key ,\
+        query = "CREATE TABLE IF NOT EXISTS people (name TEXT NOT NULL PRIMARY KEY ,\
          phone_number INTEGER NOT NULL, email_address TEXT NOT NULL );"
         self.db.execute_query(query)
 
@@ -15,6 +15,11 @@ class Person:
 
     def view_person(self, name):
         query = "SELECT * FROM people WHERE name = ?"
-        params = tuple(name)
+        params = (name,)
         results = self.db.execute_read_query(query, params)
         return results
+
+    def remove_person(self, name):
+        query = "DELETE FROM people WHERE name = ?"
+        params = (name,)
+        self.db.execute_query(query, params)
