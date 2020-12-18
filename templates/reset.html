@@ -2,16 +2,14 @@
 <html lang="en">
 <head>
 
-{% if data %}
-    {% set ID = data['ID'] %}
-    {% set name = data['name'] %}
-    {% set data_cap = data['data_cap'] %}
-    {% set cost = data['cost'] %}
+{% if car %}
+    {% set name = person['name'] %}
+    {% set phone = person['phone'] %}
+    {% set email = person['email'] %}
 {% else %}
-    {% set ID = '' %}
     {% set name = '' %}
-    {% set data_cap = '' %}
-    {% set cost = '' %}
+    {% set phone = '' %}
+    {% set email = '' %}
 {% endif %}
 
     <meta charset="UTF-8">
@@ -27,17 +25,15 @@
     <h2>Modify Contact Information</h2>
 
     <form method="POST">
-        <label for="ID">ID:</label><br>
-        <input type="text" id="ID" name="ID" value="{{ID}}"
-            {% if data %} disabled {% endif %}>
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name" value="{{name}}"
+            {% if car %} disabled {% endif %}>
         
         <br>
-        <label for="name">Name:</label><br>
-        <input type="text" id="name" name="name" value="{{name}}"><br>
-        <label for="data_cap">Data Cap:</label><br>
-        <input type="text" id="data_cap" name="data_cap" value="{{data_cap}}"><br><br>
-        <label for="cost">Cost:</label><br>
-        <input type="text" id="cost" name="cost" value="{{cost}}"><br><br>
+        <label for="phone">Phone Number:</label><br>
+        <input type="text" id="phone" name="phone" value="{{phone}}"><br>
+        <label for="email">Email:</label><br>
+        <input type="text" id="email" name="email" value="{{email}}"><br><br>
         <input type="submit" value="Submit">
     </form>
     

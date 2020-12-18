@@ -37,28 +37,6 @@
         <input type="submit" value="Submit">
     </form>
     
-    <table>
-    
-        {% if ISP|length %}
-        
-            {% for ISP in ISPs %}
-            
-                <tr>
-                    <td> {{ISP['ID']}} </td>
-                    <td> {{ISP['name']}} </td>
-                    <td> {{ISP['type']}} </td>
-                    <td> <a href="{{ISP['ID']}}"> view / update </a></td>
-                    <td> <a href="../delete/{{device['ID']}}"> delete </a></td>
-                </tr>
-                
-            {% endfor %}
-            
-        {% else %}
-            No ISPs
-        {% endif %}*
-        
-    </table>
-    
 </div>
 </body>
 </html>

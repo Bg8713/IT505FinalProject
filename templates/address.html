@@ -3,12 +3,12 @@
 <head>
 
 {% if address %}
-    {% set plan_id = address['plan_id'] %}
-    {% set street = address['street'] %}
-    {% set city = address['city'] %}
-    {% set state = address['state'] %}
-    {% set postal_code = address['postal_code'] %}
-    {% set country = address['country'] %}
+    {% set plan_id = address[5] %}
+    {% set street = address[0] %}
+    {% set city = address[1] %}
+    {% set state = address[2] %}
+    {% set postal_code = address[3] %}
+    {% set country = address[4] %}
 {% else %}
     {% set plan_id = '' %}
     {% set street = '' %}
@@ -48,31 +48,6 @@
         <input type="text" id="country" name="country" value="{{country}}"><br><br>
         <input type="submit" value="Submit">
     </form>
-    
-    <table>
-    
-        {% if address|length %}
-        
-            {% for address in addresses %}
-            
-                <tr>
-                    <td> {{address['plan_id']}} </td>
-                    <td> {{address['street']}} </td>
-                    <td> {{address['city']}} </td>
-                    <td> {{address['state']}} </td>
-                    <td> {{address['postal_code']}} </td>
-                    <td> {{address['country']}} </td>
-                    <td> <a href="{{address['plan_id']}}"> view / update </a></td>
-                    <td> <a href="../delete/{{person['plan_id']}}"> delete </a></td>
-                </tr>
-                
-            {% endfor %}
-            
-        {% else %}
-            No addresses
-        {% endif %}
-        
-    </table>
     
 </div>
 </body>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <title>Main</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+
+</head>
+<body>
+<div class="container-fluid">
+    
+    <h2>Modify Contact Information</h2>
+    
+    <table border=1 cellpadding=4>
+        <tr>
+            <th>Plan ID</th>
+            <th>Street</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Postal Code</th>
+            <th>Country</th>
+            <th colspan="3">Actions</th>
+        </tr>
+    
+        {% if address|length %}
+        
+            {% for address in addresses %}
+            
+                <tr>
+                    <td> {{address[5]}} </td>
+                    <td> {{address[0]}} </td>
+                    <td> {{address[1]}} </td>
+                    <td> {{address[2]}} </td>
+                    <td> {{address[3]}} </td>
+                    <td> {{address[4]}} </td>
+                    <td> <a href="{{address['plan_id']}}"> view / update </a></td>
+                    <td> <a href="../delete/{{address['plan_id']}}"> delete </a></td>
+                </tr>
+                
+            {% endfor %}
+            
+        {% else %}
+            No addresses
+        {% endif %}
+        
+    </table>
+    
+</div>
+</body>
+</html>

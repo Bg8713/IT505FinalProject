@@ -14,13 +14,13 @@
     <p>Choose one of the options below</p>
     
     <ul>
-    <li> <a href="person"> Modify People </a> </li>
-    <li> <a href="address"> Modify Addresses </a> </li>
-    <li> <a href="device"> Modify Devices </a> </li>
-    <li> <a href="data"> Modify Data Plans </a> </li>
-    <li> <a href="internet"> Modify Internet Services </a> </li>
-    <li> <a href="import"> Load data from CSV </a> </li>
-    <li> <a href="reset"> Reset the database </a> </li>
+    <li> <a href="{{url_for('ModifyPeople') }}"> Modify People </a> </li>
+    <li> <a href="{{ url_for('ModifyAddresses') }}"> Modify Addresses </a> </li>
+    <li> <a href="{{ url_for('ModifyDebices') }}"> Modify Devices </a> </li>
+    <li> <a href="{{ url_for('ModifyDataPlans') }}"> Modify Data Plans </a> </li>
+    <li> <a href="{{ url_for('ModifyInternetServices') }}"> Modify Internet Services </a> </li>
+    <li> <a href="{{ url_for('LoadData') }}"> Load data from CSV </a> </li>
+    <li> <a href="{{ url_for('ResetDataBase') }}"> Reset the database </a> </li>
     </ul>
 
 </div>
