@@ -23,3 +23,10 @@ class ISP:
         query = "DELETE FROM ISPs WHERE name = ?"
         params = (name,)
         self.db.execute_query(query, params)
+
+    def reset_table(self):
+        query = "DROP TABLE ISPs"
+        self.db.execute_query(query)
+        query = "CREATE TABLE IF NOT EXISTS ISPs (ID INTEGER NOT NULL PRIMARY KEY ,\
+                 internet_plan TEXT NOT NULL, modem_provided INTEGER NOT NULL );"
+        self.db.execute_query(query)

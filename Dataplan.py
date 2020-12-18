@@ -23,3 +23,10 @@ class DataPlan:
         query = "DELETE FROM dataplans WHERE name = ?"
         params = (name,)
         self.db.execute_query(query, params)
+
+    def reset_table(self):
+        query = "DROP TABLE dataplans"
+        self.db.execute_query(query)
+        query = "CREATE TABLE IF NOT EXISTS dataplans (ID TEXT NOT NULL PRIMARY KEY ,\
+                 name TEXT NOT NULL, data_cap TEXT NOT NULL, cost REAL NOT NULL );"
+        self.db.execute_query(query)

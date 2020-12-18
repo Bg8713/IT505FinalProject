@@ -21,21 +21,21 @@ class Database:
 
     def execute_query(self, query, params=()):
         cursor = self.connection.cursor()
-        # try:
-        cursor.execute(query, params)
-        self.connection.commit()
-        # except Error as e:
-        #     print("the error {} occurred".format(e))
+        try:
+            cursor.execute(query, params)
+            self.connection.commit()
+        except Error as e:
+            print("the error {} occurred".format(e))
 
     def execute_read_query(self, query, params=()):
         cursor = self.connection.cursor()
-        # try:
-        cursor.execute(query, params)
-        self.connection.commit()
-        result = cursor.fetchall()
-        return result
-        # except Error as e: \
-        #         print("the error {} occurred".format(e))
+        try:
+            cursor.execute(query, params)
+            self.connection.commit()
+            result = cursor.fetchall()
+            return result
+        except Error as e:
+            print("the error {} occurred".format(e))
 
 
 def main():

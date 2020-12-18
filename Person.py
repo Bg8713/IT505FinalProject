@@ -23,3 +23,10 @@ class Person:
         query = "DELETE FROM people WHERE name = ?"
         params = (name,)
         self.db.execute_query(query, params)
+
+    def reset_table(self):
+        query = "DROP TABLE people"
+        self.db.execute_query(query)
+        query = "CREATE TABLE IF NOT EXISTS people (name TEXT NOT NULL PRIMARY KEY ,\
+                 phone_number INTEGER NOT NULL, email_address TEXT NOT NULL );"
+        self.db.execute_query(query)

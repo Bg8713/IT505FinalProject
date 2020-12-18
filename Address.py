@@ -28,3 +28,14 @@ class Address:
         query = "DELETE FROM addresses WHERE occupant = ?"
         params = (occupant,)
         self.db.execute_query(query, params)
+
+    def reset_table(self):
+        query = "DROP TABLE addresses"
+        self.db.execute_query(query)
+        query = "CREATE TABLE IF NOT EXISTS addresses (street TEXT NOT NULL,\
+                         city TEXT NOT NULL, state TEXT NOT NULL, " \
+                "postal_code TEXT NOT NULL, country TEXT NOT NULL, " \
+                "plan_id INTEGER NOT NULL, occupant TEXT NOT NULL," \
+                "FOREIGN KEY (plan_id) REFERENCES ISPs(ID), " \
+                "FOREIGN KEY (occupant) REFERENCES people(name) ON DELETE CASCADE ) ;"
+        self.db.execute_query(query)

@@ -24,3 +24,11 @@ class Device:
         query = "DELETE FROM device WHERE name = ?"
         params = (name,)
         self.db.execute_query(query, params)
+
+    def reset_table(self):
+        query = "DROP TABLE devices"
+        self.db.execute_query(query)
+        query = "CREATE TABLE IF NOT EXISTS devices (plan_id TEXT NOT NULL,\
+                 name TEXT NOT NULL, type TEXT NOT NULL, owner TEXT NOT NULL, " \
+                "FOREIGN KEY (plan_id) REFERENCES dataplans(ID), FOREIGN KEY (owner) REFERENCES person(name));"
+        self.db.execute_query(query)
