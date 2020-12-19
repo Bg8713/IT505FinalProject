@@ -12,11 +12,13 @@
 <body>
 <div class="container-fluid">
     
-    <h2>Modify Contact Information</h2>
+    <h2>Device Information</h2>
     
     <table>
+
+    {% if devices %}
     
-        {% if device|length %}
+        {% if devices|length %}
         
             {% for device in devices %}
             
@@ -24,18 +26,21 @@
                     <td> {{device['plan_id']}} </td>
                     <td> {{device['name']}} </td>
                     <td> {{device['type']}} </td>
+                    <td> {{ device['owner'] }}</td>
                     <td> <a href="{{device['plan_id']}}"> view / update </a></td>
-                    <td> <a href="../delete/{{device['plan_id']}}"> delete </a></td>
+                    <td> <a href="../deleteDevice/{{device['name']}}"> delete </a></td>
                 </tr>
                 
             {% endfor %}
             
         {% else %}
             No devices
-        {% endif %}*
+        {% endif %}
+    {% endif %}
         
     </table>
-    
+
+<a href="/">Return to Home</a>
 </div>
 </body>
 </html>

@@ -24,8 +24,10 @@
             <th>View/Edit</th>
             <th>Delete</th>
         </tr>
+
+    {% if people %}
     
-        {% if person|length %}
+        {% if people|length %}
         
             {% for person in people %}
             
@@ -34,7 +36,7 @@
                     <td> {{person[1]}} </td>
                     <td> {{person[2]}} </td>
                     <td> <a href="{{person[0]}}"> view / update </a></td>
-                    <td> <a href="../delete/{{person[0]}}"> delete </a></td>
+                    <td> <a href="../deletePerson/{{person[0]}}"> delete </a></td>
                 </tr>
                 
             {% endfor %}
@@ -42,9 +44,12 @@
         {% else %}
             No people
         {% endif %}
+
+    {% endif %}
         
     </table>
-    
+
+<a href="/">Return to Home</a>
 </div>
 
 </body>

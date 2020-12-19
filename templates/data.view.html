@@ -12,13 +12,15 @@
 <body>
 <div class="container-fluid">
     
-    <h2>Modify Contact Information</h2>
+    <h2>Data Plan Information</h2>
     
     <table>
+
+    {% if dataplans %}
     
-        {% if data|length %}
+        {% if dataplans|length %}
         
-            {% for data in dataplan %}
+            {% for data in dataplans %}
             
                 <tr>
                     <td> {{data['ID']}} </td>
@@ -26,17 +28,20 @@
                     <td> {{data['data_cap']}} </td>
                     <td> {{data['cost']}} </td>
                     <td> <a href="{{data['ID']}}"> view / update </a></td>
-                    <td> <a href="../delete/{{data['ID']}}"> delete </a></td>
+                    <td> <a href="../deleteDataplan/{{data['name']}}"> delete </a></td>
                 </tr>
                 
             {% endfor %}
             
         {% else %}
             No dataplan
-        {% endif %}*
+        {% endif %}
+
+    {% endif %}
         
     </table>
-    
+
+<a href="/">Return to Home</a>
 </div>
 </body>
 </html>

@@ -12,7 +12,7 @@
 <body>
 <div class="container-fluid">
     
-    <h2>Modify Contact Information</h2>
+    <h2>Modify Address Information</h2>
     
     <table border=1 cellpadding=4>
         <tr>
@@ -22,10 +22,13 @@
             <th>State</th>
             <th>Postal Code</th>
             <th>Country</th>
+            <th>Occupant</th>
             <th colspan="3">Actions</th>
         </tr>
+
+    {% if addresses %}
     
-        {% if address|length %}
+        {% if addresses|length %}
         
             {% for address in addresses %}
             
@@ -36,8 +39,9 @@
                     <td> {{address[2]}} </td>
                     <td> {{address[3]}} </td>
                     <td> {{address[4]}} </td>
+                    <td> {{ address[6] }}</td>
                     <td> <a href="{{address['plan_id']}}"> view / update </a></td>
-                    <td> <a href="../delete/{{address['plan_id']}}"> delete </a></td>
+                    <td> <a href="../deleteAddress/{{address['plan_id']}}"> delete </a></td>
                 </tr>
                 
             {% endfor %}
@@ -45,9 +49,11 @@
         {% else %}
             No addresses
         {% endif %}
+    {% endif %}
         
     </table>
-    
+
+<a href="/">Return to Home</a>
 </div>
 </body>
 </html>

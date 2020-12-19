@@ -28,7 +28,7 @@
 <body>
 <div class="container-fluid">
     
-    <h2>Modify Contact Information</h2>
+    <h2>Modify Address Information</h2>
 
     <form method="POST">
         <label for="plan_id">Plan ID:</label><br>
@@ -45,10 +45,13 @@
         <label for="postal_code">Postal Code:</label><br>
         <input type="text" id="postal_code" name="postal_code" value="{{postal_code}}"><br><br>
         <label for="country">Country:</label><br>
-        <input type="text" id="country" name="country" value="{{country}}"><br><br>
+        <input type="text" id="country" name="country" value="{{country}}"><br>
+        <label for="Occupant">Occupant:</label><br>
+        <input type="text" id="Occupant" name="Occupant" value="{{country}}"><br>
         <input type="submit" value="Submit">
     </form>
-    
+
+<a href="/">Return to Home</a>
 </div>
 </body>
 </html>

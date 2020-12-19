@@ -12,30 +12,35 @@
 <body>
 <div class="container-fluid">
     
-    <h2>Modify Contact Information</h2>
+    <h2>Internet Service Information</h2>
     
     <table>
+
+    {% if ISPs %}
     
-        {% if ISP|length %}
+        {% if ISPs|length %}
         
             {% for ISP in ISPs %}
             
                 <tr>
                     <td> {{ISP['ID']}} </td>
-                    <td> {{ISP['name']}} </td>
-                    <td> {{ISP['type']}} </td>
+                    <td> {{ISP['internet_plan']}} </td>
+                    <td> {{ISP['modem_provided']}} </td>
                     <td> <a href="{{ISP['ID']}}"> view / update </a></td>
-                    <td> <a href="../delete/{{device['ID']}}"> delete </a></td>
+                    <td> <a href="../deleteISP/{{ISP['ID']}}"> delete </a></td>
                 </tr>
                 
             {% endfor %}
             
         {% else %}
             No ISPs
-        {% endif %}*
+        {% endif %}
+
+    {% endif %}
         
     </table>
-    
+
+<a href="/">Return to Home</a>
 </div>
 </body>
 </html>

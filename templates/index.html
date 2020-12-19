@@ -15,10 +15,15 @@
     
     <ul>
     <li> <a href="{{url_for('ModifyPeople') }}"> Modify People </a> </li>
+    <li> <a href="{{url_for('people_list') }}"> View People </a> </li>
     <li> <a href="{{ url_for('ModifyAddresses') }}"> Modify Addresses </a> </li>
-    <li> <a href="{{ url_for('ModifyDebices') }}"> Modify Devices </a> </li>
+    <li> <a href="{{url_for('addresses_list') }}"> View Addresses </a> </li>
+    <li> <a href="{{ url_for('ModifyDevices') }}"> Modify Devices </a> </li>
+    <li> <a href="{{url_for('devices_list') }}"> View Devices </a> </li>
     <li> <a href="{{ url_for('ModifyDataPlans') }}"> Modify Data Plans </a> </li>
+    <li> <a href="{{url_for('dataplans_list') }}"> View Data Plans </a> </li>
     <li> <a href="{{ url_for('ModifyInternetServices') }}"> Modify Internet Services </a> </li>
+    <li> <a href="{{url_for('ISPs_list') }}"> View Internet Services </a> </li>
     <li> <a href="{{ url_for('LoadData') }}"> Load data from CSV </a> </li>
     <li> <a href="{{ url_for('ResetDataBase') }}"> Reset the database </a> </li>
     </ul>

@@ -22,7 +22,7 @@
 <body>
 <div class="container-fluid">
     
-    <h2>Modify Contact Information</h2>
+    <h2>Modify Device Information</h2>
 
     <form method="POST">
         <label for="plan_id">Plan ID:</label><br>
@@ -33,10 +33,14 @@
         <label for="name">Name:</label><br>
         <input type="text" id="name" name="name" value="{{name}}"><br>
         <label for="type">Type:</label><br>
-        <input type="text" id="type" name="type" value="{{type}}"><br><br>
+        <input type="text" id="type" name="type" value="{{type}}"><br>
+        <label for="owner">Owner:</label><br>
+        <input type="text" id="owner" name="owner" value="{{owner}}"><br><br>
         <input type="submit" value="Submit">
+
     </form>
-    
+
+<a href="/">Return to Home</a>
 </div>
 </body>
 </html>
