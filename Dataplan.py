@@ -1,3 +1,6 @@
+import csv
+
+
 class DataPlan:
     def __init__(self, db):
         self.db = db
@@ -30,3 +33,15 @@ class DataPlan:
         query = "CREATE TABLE IF NOT EXISTS dataplans (ID TEXT NOT NULL PRIMARY KEY ,\
                  name TEXT NOT NULL, data_cap TEXT NOT NULL, cost REAL NOT NULL );"
         self.db.execute_query(query)
+
+    def import_dataplans(self, file):
+        filename = 'uploads/' + file
+        with open(filename, 'r') as infile:
+            reader = csv.DictReader(infile)
+            for row in reader:
+                self.add_dataplan(
+                    row['ID'],
+                    row['name'],
+                    row['data_cap'],
+                    row['cost'],
+                )

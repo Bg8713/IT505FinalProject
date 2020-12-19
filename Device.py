@@ -1,3 +1,6 @@
+import csv
+
+
 class Device:
     def __init__(self, db):
         self.db = db
@@ -32,3 +35,15 @@ class Device:
                  name TEXT NOT NULL, type TEXT NOT NULL, owner TEXT NOT NULL, " \
                 "FOREIGN KEY (plan_id) REFERENCES dataplans(ID), FOREIGN KEY (owner) REFERENCES person(name));"
         self.db.execute_query(query)
+
+    def import_devices(self, file):
+        filename = 'uploads/' + file
+        with open(filename, 'r') as infile:
+            reader = csv.DictReader(infile)
+            for row in reader:
+                self.add_device(
+                    row['plan_id'],
+                    row['name'],
+                    row['type'],
+                    row['owner']
+                )

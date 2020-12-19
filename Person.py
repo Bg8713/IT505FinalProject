@@ -1,3 +1,6 @@
+import csv
+
+
 class Person:
     def __init__(self, db):
         self.db = db
@@ -30,3 +33,14 @@ class Person:
         query = "CREATE TABLE IF NOT EXISTS people (name TEXT NOT NULL PRIMARY KEY ,\
                  phone_number INTEGER NOT NULL, email_address TEXT NOT NULL );"
         self.db.execute_query(query)
+
+    def import_people(self, file):
+        filename = 'uploads/' + file
+        with open(filename, 'r') as infile:
+            reader = csv.DictReader(infile)
+            for row in reader:
+                self.add_person(
+                    row['name'],
+                    row['phone_number'],
+                    row['email_address']
+                )

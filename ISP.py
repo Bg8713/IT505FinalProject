@@ -1,3 +1,6 @@
+import csv
+
+
 class ISP:
     def __init__(self, db):
         self.db = db
@@ -30,3 +33,14 @@ class ISP:
         query = "CREATE TABLE IF NOT EXISTS ISPs (ID INTEGER NOT NULL PRIMARY KEY ,\
                  internet_plan TEXT NOT NULL, modem_provided INTEGER NOT NULL );"
         self.db.execute_query(query)
+
+    def import_ISPs(self, file):
+        filename = 'uploads/' + file
+        with open(filename, 'r') as infile:
+            reader = csv.DictReader(infile)
+            for row in reader:
+                self.add_ISP(
+                    row['ID'],
+                    row['internet_plan'],
+                    row['modem_provided'],
+                )

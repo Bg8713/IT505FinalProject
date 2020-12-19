@@ -1,3 +1,6 @@
+import csv
+
+
 class Address:
     def __init__(self, db):
         self.db = db
@@ -39,3 +42,18 @@ class Address:
                 "FOREIGN KEY (plan_id) REFERENCES ISPs(ID), " \
                 "FOREIGN KEY (occupant) REFERENCES people(name) ON DELETE CASCADE ) ;"
         self.db.execute_query(query)
+
+    def import_addresses(self, file):
+        filename = 'uploads/' + file
+        with open(filename, 'r') as infile:
+            reader = csv.DictReader(infile)
+            for row in reader:
+                self.add_address(
+                    row['street'],
+                    row['city'],
+                    row['state'],
+                    row['postal_code'],
+                    row['country'],
+                    row['plan_id'],
+                    row['occupant']
+                )

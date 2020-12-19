@@ -1,10 +1,10 @@
 import sqlite3
 from sqlite3 import Error
-from Assignments.FinalProject.Person import Person
-from Assignments.FinalProject.Address import Address
-from Assignments.FinalProject.Device import Device
-from Assignments.FinalProject.Dataplan import DataPlan
-from Assignments.FinalProject.ISP import ISP
+# from Assignments.FinalProject.Person import Person
+# from Assignments.FinalProject.Address import Address
+# from Assignments.FinalProject.Device import Device
+# from Assignments.FinalProject.Dataplan import DataPlan
+# from Assignments.FinalProject.ISP import ISP
 
 
 class Database:
